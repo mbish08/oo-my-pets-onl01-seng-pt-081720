@@ -1,7 +1,7 @@
 require 'pry'
 
 class Owner
-  attr_accessor :owner 
+  attr_accessor :owner, :mood 
   attr_writer 
   attr_reader :name, :species 
   
@@ -14,7 +14,7 @@ class Owner
   end 
   
   def say_species
-    "I am a human."
+    "I am a #{species}."
   end 
   
   def self.all 
@@ -50,7 +50,26 @@ class Owner
   end 
   
   def walk_dogs
-    Dog.mood = "happy"
+    self.dogs.each do |dog|
+      dog.mood = "happy"
+    end 
+  end 
+  
+  def feed_cats
+    self.cats.each { |cat| cat.mood = "happy" }
+  end 
+  
+  def sell_pets
+    @pets = []
+    self.dogs.each { |dog| dog.mood = "nervous" }
+    self.cats.each { |cat| cat.mood = "nervous" }
+    self.dogs.each { |dog| dog.owner = nil }
+    self.cats.each { |cat| cat.owner = nil }
+    Owner.reset_all
+  end 
+  
+  def list_pets
+    "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
   end 
   
 end
