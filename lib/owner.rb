@@ -1,7 +1,7 @@
 require 'pry'
 
 class Owner
-  attr_accessor :owner 
+  attr_accessor :owner, :mood 
   attr_writer 
   attr_reader :name, :species 
   
