@@ -64,8 +64,8 @@ class Owner
     self.dogs.each { |dog| dog.mood = "nervous" }
     self.cats.each { |cat| cat.mood = "nervous" }
     @pets << (self.dogs && self.cats)
-    Owner.reset_all
     @pets.each { |pet| pet.owner = nil }
+    Owner.reset_all
   end 
   
 end
